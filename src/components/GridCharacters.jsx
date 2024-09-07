@@ -15,5 +15,5 @@ export const GridCharacters = ({ characters }) => {
                 </div>
             ))}
         </div>
-    );
+    )
 }

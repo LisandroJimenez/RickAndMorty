@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { useCharacters } from '../hooks/usePersonaje';
-import { GridCharacters } from './GridCharacters';
-import Pagination from '@mui/material/Pagination';
-import { BuscarPersonaje } from './BuscarPersonaje';
+import React, { useState } from 'react'
+import { useCharacters } from '../hooks/usePersonaje'
+import { GridCharacters } from './GridCharacters'
+import Pagination from '@mui/material/Pagination'
+import { BuscarPersonaje } from './BuscarPersonaje'
 
 export const App = () => {
-    const [page, setPage] = useState(1);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedSpecies, setSelectedSpecies] = useState('');
-    
-    const { characters, pag, allSpecies } = useCharacters(page, searchTerm, selectedSpecies);
+    const [page, setPage] = useState(1)
+    const [searchTerm, setSearchTerm] = useState('')
+    const [selectedSpecies, setSelectedSpecies] = useState('')
+
+    const { characters, pag, allSpecies } = useCharacters(page, searchTerm, selectedSpecies)
 
     const handlePageChange = (event, value) => {
-        setPage(value);
+        setPage(value)
     }
 
     const handleSearch = (term) => {
-        setSearchTerm(term);
-        setPage(1); // Resetea la página al 1 cuando se cambia la búsqueda
+        setSearchTerm(term)
+        setPage(1) 
     }
 
     return (
