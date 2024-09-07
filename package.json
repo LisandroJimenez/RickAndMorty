@@ -17,7 +17,8 @@
     "@mui/material": "^6.0.2",
     "bootstrap": "^5.3.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "rickandmorty": "file:"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-export const BuscarPersonaje = ({ handlePerson }) => {
-    const [categoria, setCategoria] = useState('')
+export const BuscarPersonaje = ({ handleSearch, allSpecies }) => {
+    const [selectedSpecies, setSelectedSpecies] = useState('');
+
+    const handleSpeciesChange = (event) => {
+        const species = event.target.value;
+        setSelectedSpecies(species);
+        handleSearch(species); // Actualiza la búsqueda con la especie seleccionada
+    }
+
     return (
-        <>
-            <select className="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-
-        </>
+        <select className="form-select" aria-label="Default select example" value={selectedSpecies} onChange={handleSpeciesChange}>
+            <option value="">Seleccionar Especie</option>
+            {allSpecies.map((specie, index) => (
+                <option key={index} value={specie}>{specie}</option>
+            ))}
+        </select>
     )
 }

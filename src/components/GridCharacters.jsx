@@ -1,36 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { reqPersonaje } from './path-to-your-service'; // Ajusta la ruta según tu estructura de carpetas
+import React from 'react';
 
-export const GridCharacters = () => {
-    const [characters, setCharacters] = useState([]);
-
-    useEffect(() => {
-        const fetchCharacters = async () => {
-            const data = await reqPersonaje();
-            setCharacters(data);
-        };
-
-        fetchCharacters();
-    }, []);
-
+export const GridCharacters = ({ characters }) => {
     return (
         <div className='d-flex flex-row row row-cols-6'>
-            {
-                characters.length > 0 ? (
-                    characters.map((char) => (
-                        <div key={char.id} className='col'>
-                            <li>{char.name}</li>
-                            <img
-                                style={{ width: '14rem' }}
-                                src={char.image}
-                                alt={char.name}
-                            />
+            {characters && characters.map((char) => (
+                <div key={char.id} className='col mb-4'>
+                    <div className='card' style={{ width: '14rem' }}>
+                        <img src={char.image} className='card-img-top' alt={`Image of ${char.name}`} />
+                        <div className='card-body'>
+                            <h5 className='card-title'>{char.name}</h5>
+                            <p className='card-text'> {char.status}</p>
                         </div>
-                    ))
-                ) : (
-                    <p>Loading...</p>
-                )
-            }
+                    </div>
+                </div>
+            ))}
         </div>
     );
-};
+}
